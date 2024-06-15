@@ -7,5 +7,6 @@ module.exports = {
     mongoUri: process.env.MONGO_URI,
     jwtSecret: process.env.JWT_SECRET,
     blockchainProvider: process.env.BLOCKCHAIN_PROVIDER,
-    contractAddress: process.env.CONTRACT_ADDRESS,
+    invoiceContractAddress: process.env.INVOICE_CONTRACT_ADDRESS,
+    escrowContractAddress: process.env.ESCROW_CONTRACT_ADDRESS,
 }
