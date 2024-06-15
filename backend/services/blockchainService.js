@@ -1,14 +1,14 @@
-const Web3 = require('web3');
+const { Web3 } = require('web3');
 const config = require('../config/config');
 
 // Initialize Web3
-const web3 = new Web3(new Web3.providers.HttpProvider(config.blockchainProvider));
+const web3 = new Web3(config.blockchainProvider);
 
 // Smart contract ABI and address
-const invoiceABI = require('../contracts/Invoice.json').abi;
+const invoiceABI = require('../build/contracts/Invoice.json').abi;
 const invoiceAddress = config.invoiceContractAddress;
 
-const escrowABI = require('../contracts/Escrow.json').abi;
+const escrowABI = require('../build/contracts/Escrow.json').abi;
 const escrowAddress = config.escrowContractAddress;
 
 // Create contract instances

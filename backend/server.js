@@ -5,5 +5,5 @@ const config = require("./config/config");
 connectDB();
 
 app.listen(config.port, () => {
-    console.log(`Server running on port ${port}`);
+    console.log(`Server running on port ${config.port}`);
 });
