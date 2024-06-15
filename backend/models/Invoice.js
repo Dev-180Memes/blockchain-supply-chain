@@ -16,6 +16,14 @@ const invoiceSchema = new mongoose.Schema({
         ref: "User",
         required: true,
     },
+    buyerWalletAddress: {
+        type: String,
+        required: true,
+    },
+    sellerWalletAddress: {
+        type: String,
+        required: true,
+    },
     amount: {
         type: Number,
         required: true,

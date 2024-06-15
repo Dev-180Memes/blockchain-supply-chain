@@ -24,12 +24,19 @@ exports.createInvoice = async (req, res) => {
             return res.status(400).json({ message: "Invalid buyer" });
         }
 
+        const seller = await User.findById(sellerId);
+        if (!seller || seller.role !== 'seller') {
+            return res.status(400).json({ message: 'Invalid seller' });
+        }
+
         const invoiceNumber = await generateInvoiceNumber();
 
         const invoice = new Invoice({
             invoiceNumber,
             buyer: buyerId,
             seller: sellerId,
+            buyerWalletAddress: buyer.walletAddress,
+            sellerWalletAddress: seller.walletAddress,
             amount,
             productDetails,
             status: "pending",

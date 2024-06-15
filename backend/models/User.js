@@ -20,6 +20,11 @@ const userSchema = new mongoose.Schema({
         enum: ['buyer', 'seller'],
         required: true,
     },
+    walletAddress: {
+        type: String,
+        required: true,
+        unique: true,
+    },
 }, { timestamps: true });
 
 const User = mongoose.models.User || mongoose.model("User", userSchema);

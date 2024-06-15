@@ -1,41 +1,51 @@
 const Web3 = require('web3');
 const config = require('../config/config');
 
+// Initialize Web3
 const web3 = new Web3(new Web3.providers.HttpProvider(config.blockchainProvider));
 
-const contractABI = require ("../contracts/ContractABI.json");
-const contractAddress = config.contractAddress;
+// Smart contract ABI and address
+const invoiceABI = require('../contracts/Invoice.json').abi;
+const invoiceAddress = config.invoiceContractAddress;
 
-const contract = new web3.eth.Contract(contractABI, contractAddress);
+const escrowABI = require('../contracts/Escrow.json').abi;
+const escrowAddress = config.escrowContractAddress;
 
+// Create contract instances
+const invoiceContract = new web3.eth.Contract(invoiceABI, invoiceAddress);
+const escrowContract = new web3.eth.Contract(escrowABI, escrowAddress);
+
+// Function to create invoice on the blockchain
 exports.createInvoiceOnBlockchain = async (invoice) => {
     try {
         const accounts = await web3.eth.getAccounts();
-        await contract.methods.creatInvoice(invoice.invoiceNumber, invoice.amount)
+        await invoiceContract.methods.createInvoice(invoice.invoiceNumber, invoice.amount, invoice.buyerWalletAddress, invoice.sellerWalletAddress)
             .send({ from: accounts[0], gas: 3000000 });
-        console.log("Invoice created on blockchain");
+        console.log('Invoice created on blockchain');
     } catch (error) {
         console.error('Error creating invoice on blockchain', error);
     }
 };
 
+// Function to move funds to escrow
 exports.moveToEscrow = async (invoice) => {
     try {
         const accounts = await web3.eth.getAccounts();
-        await contract.methods.moveToEscrow(invoice.invoiceNumber)
+        await escrowContract.methods.depositFunds(invoice.invoiceNumber, invoice.buyerWalletAddress, invoice.sellerWalletAddress)
             .send({ from: accounts[0], gas: 3000000, value: web3.utils.toWei(invoice.amount.toString(), 'ether') });
-        console.log("Funds moved to escrow");
+        console.log('Funds moved to escrow');
     } catch (error) {
         console.error('Error moving funds to escrow', error);
     }
 };
 
+// Function to release funds from escrow
 exports.releaseFunds = async (invoice) => {
     try {
         const accounts = await web3.eth.getAccounts();
-        await contract.methods.releaseFunds(invoice.invoiceNumber)
+        await escrowContract.methods.releaseFunds(invoice.invoiceNumber)
             .send({ from: accounts[0], gas: 3000000 });
-        console.log("Funds released to seller");
+        console.log('Funds released from escrow');
     } catch (error) {
         console.error('Error releasing funds from escrow', error);
     }
