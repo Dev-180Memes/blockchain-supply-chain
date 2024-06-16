@@ -4,7 +4,7 @@ const User = require("../models/User");
 const config = require("../config/config");
 
 exports.register = async (req, res) => {
-    const { username, email, password, role } = req.body;
+    const { username, email, password, role, walletAddress } = req.body;
 
     try{
         const existingUser = await User.findOne({ email });
@@ -20,6 +20,7 @@ exports.register = async (req, res) => {
             email,
             password: hashedPassword,
             role,
+            walletAddress,
         });
 
         await user.save();
@@ -66,5 +67,21 @@ exports.protect = async (req, res, next) => {
         next();
     } catch (error) {
         res.status(401).json({ message: "Token is not valid" });
+    }
+};
+
+exports.getuser = async (req, res) => {
+    try {
+        const userId = req.params.id;
+
+        const user = await User.findById(userId).select("-password");
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.status(200).json(user);
+
+    } catch (error) {
+        res.status(500).json({ message: "Server error" });
     }
 };
