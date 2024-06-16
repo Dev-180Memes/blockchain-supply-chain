@@ -13,7 +13,7 @@ const Login: React.FC = () => {
         e.preventDefault();
         try {
             const response = await authService.login({ email, password } as LoginCredentials);
-            console.log("Login successfull:", response.data);
+            // console.log("Login successfull:", response.data);
             if (response.data.token) {
                 localStorage.setItem("token", response.data.token);
             }

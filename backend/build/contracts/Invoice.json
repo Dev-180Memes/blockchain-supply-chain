@@ -9680,10 +9680,16 @@
       "links": {},
       "address": "0xe8AB51962C792dB29700de9249B2f1c04EEB4A30",
       "transactionHash": "0xc7df340f162ed7064ef1238468dbf310719807e7d4e00e92421efa335fb517ff"
+    },
+    "1718551799601": {
+      "events": {},
+      "links": {},
+      "address": "0xE87a557ABaD54B4C3dC413E87D06515E8aD02d11",
+      "transactionHash": "0x542474e186e4342f5b6f77276d13f1e16bcf0a5cd3144dd33017a5cdf2f8d905"
     }
   },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-06-16T01:57:30.594Z",
+  "updatedAt": "2024-06-16T15:31:17.742Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

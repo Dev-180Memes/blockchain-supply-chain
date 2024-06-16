@@ -53,6 +53,7 @@ export interface RegisterData {
 }
 
 export interface ApiResponse<T> {
+    invoices?: Invoice[];
     data: T;
     message?: string;
 }

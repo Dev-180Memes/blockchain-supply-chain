@@ -60,12 +60,15 @@ exports.protect = async (req, res, next) => {
         return res.status(401).json({ message: "No token, Authorization denied" });
     }
 
+    // console.log(token, config.jwtSecret);
+
     try {
         const decoded = jwt.verify(token, config.jwtSecret);
         req.user = decoded.userId
 
         next();
     } catch (error) {
+        console.error(error);
         res.status(401).json({ message: "Token is not valid" });
     }
 };
