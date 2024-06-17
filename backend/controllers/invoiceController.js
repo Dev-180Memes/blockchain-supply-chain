@@ -159,3 +159,20 @@ exports.markInTransit = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 }
+
+exports.getOrders = async (req, res) => {
+    const userId = req.user;
+
+    try {
+        // Fetch all orders
+        const allOrders = await Order.find().populate("invoice");
+
+        // Filter orders where user is either buyer or seller
+        const orders = allOrders.filter(order => order.invoice.buyer.toString() === userId || order.invoice.seller.toString() === userId);
+
+        res.status(200).json({ orders });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server error" });
+    }
+}

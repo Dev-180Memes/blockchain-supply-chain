@@ -32,7 +32,7 @@ exports.moveToEscrow = async (invoice) => {
     try {
         const accounts = await web3.eth.getAccounts();
         await escrowContract.methods.depositFunds(invoice.invoiceNumber, invoice.buyerWalletAddress, invoice.sellerWalletAddress)
-            .send({ from: accounts[0], gas: 3000000, gasPrice: web3.utils.toWei('20', 'gwei'), value: web3.utils.toWei(invoice.amount.toString(), 'ether') });
+            .send({ from: accounts[1], gas: 3000000, gasPrice: web3.utils.toWei('20', 'gwei'), value: web3.utils.toWei(invoice.amount.toString(), 'ether') });
         console.log('Funds moved to escrow');
     } catch (error) {
         console.error('Error moving funds to escrow', error);
@@ -44,7 +44,7 @@ exports.releaseFunds = async (invoice) => {
     try {
         const accounts = await web3.eth.getAccounts();
         await escrowContract.methods.releaseFunds(invoice.invoiceNumber)
-            .send({ from: accounts[0], gas: 3000000, gasPrice: web3.utils.toWei('20', 'gwei') });
+            .send({ from: accounts[2], gas: 3000000, gasPrice: web3.utils.toWei('20', 'gwei') });
         console.log('Funds released from escrow');
     } catch (error) {
         console.error('Error releasing funds from escrow', error);

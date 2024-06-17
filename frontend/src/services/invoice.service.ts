@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Invoice, ApiResponse } from "../types";
+import { Invoice, ApiResponse, Order } from "../types";
 
 const API_URL = "http://localhost:5000/api/invoices/";
 
@@ -47,9 +47,33 @@ const markAsDelivered = async (orderId: string): Promise<ApiResponse<Invoice>> =
     return response.data;
 }
 
+const markInTransit = async (orderId: string): Promise<ApiResponse<Order>> => {
+    const token = localStorage.getItem("token");
+
+    const response = await axios.post(`${API_URL}/intransit`, { orderId }, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    return response;
+}
+
+const getOrders = async (): Promise<ApiResponse<Order[]>> => {
+    const token = localStorage.getItem("token");
+
+    const response = await axios.get(`${API_URL}/orders`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    return response;
+}
+
 export default {
     createInvoice,
     getInvoices,
     approveInvoice,
-    markAsDelivered
+    markAsDelivered,
+    markInTransit,
+    getOrders
 }

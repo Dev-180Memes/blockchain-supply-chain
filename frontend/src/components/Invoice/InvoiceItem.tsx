@@ -13,6 +13,7 @@ const InvoiceItem: React.FC<InvoiceItemProps> = ({ invoice }) => {
         try {
             await invoiceService.approveInvoice(invoice._id);
             alert('Invoice approved successfully');
+            window.location.reload();
         } catch (error) {
             console.error('Error approving invoice:', error);
             alert('Failed to approve invoice. Please try again later.');
