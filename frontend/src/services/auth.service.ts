@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AuthResponse, LoginCredentials, RegisterData, ApiResponse } from '../types';
+import { AuthResponse, LoginCredentials, RegisterData, ApiResponse, User } from '../types';
 
 const API_URL = 'http://localhost:5000/api/auth/';
 
@@ -13,6 +13,16 @@ const register = async (data: RegisterData): Promise<ApiResponse<AuthResponse>> 
     return response.data;
 }
 
+const getAllUsers = async(): Promise<ApiResponse<User[]>> => {
+    const token = localStorage.getItem('token');
+    const response = await axios.get(`${API_URL}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
+    return response;
+}
+
 const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
@@ -24,4 +34,5 @@ export default {
     login,
     register,
     logout,
+    getAllUsers
 }

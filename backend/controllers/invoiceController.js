@@ -14,6 +14,11 @@ const generateInvoiceNumber = async () => {
     return "INV-1001";
 };
 
+const changeString = (inputString) => {
+    const splitString = inputString.toString().split("-");
+    return `TRK-${splitString[1]}`;
+}
+
 exports.createInvoice = async (req, res) => {
     const { buyerId, amount, productDetails } = req.body;
     const sellerId = req.user;
@@ -80,14 +85,10 @@ exports.approveInvoice = async (req, res) => {
             return res.status(400).json({ message: "Invalid invoice or unauthorized" });
         }
 
-        invoice.status = "approved";
-        await invoice.save();
+        // Take invoice id and change it to a tracking id
+        const trackingId = changeString(invoice.invoiceNumber);
 
-        // TODO: Update invoice status on blockchain and move funds to escrow
-        await blockchainService.moveToEscrow(invoice);
-
-        const trackingId = await trackingService.generateTrackingId();
-        const Order = new Order({
+        const order = new Order({
             orderId: invoice._id,
             invoice: invoice._id,
             trackingId,
@@ -95,7 +96,13 @@ exports.approveInvoice = async (req, res) => {
             deliveryDetails: "Order is being processed",
         });
 
-        await Order.save();
+        await order.save();
+
+        invoice.status = "approved";
+        await invoice.save();
+
+        // TODO: Update invoice status on blockchain and move funds to escrow
+        await blockchainService.moveToEscrow(invoice);
 
         res.status(200).json({ message: "Invoice approved successfully", invoice });
     } catch (error) {
@@ -131,3 +138,24 @@ exports.markAsDelivered = async (req, res) => {
         res.status(500).json({ message: "Server error" });
     }
 };
+
+exports.markInTransit = async (req, res) => {
+    const { orderId } = req.body;
+    const userId = req.user;
+
+    try {
+        const order = await Order.findById(orderId).populate("invoice");
+
+        if (!order || order.invoice.seller.toString() !== userId) {
+            return res.status(400).json({ message: "Invalid order or unauthorized" });
+        }
+
+        order.status = "in transit";
+        await order.save();
+
+        res.status(200).json({ message: "Order status updated to in transit", order });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Server error" });
+    }
+}

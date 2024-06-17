@@ -4,6 +4,7 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import DashboardPage from "./pages/DashboardPage";
 import InvoicePage from "./pages/InvoicePage";
+import CreateInvoice from "./components/Invoice/CreateInvoice";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/register" Component={Register} />
         <Route path="/dashboard" Component={DashboardPage} />
         <Route path="/invoices" Component={InvoicePage} />
+        <Route path="/invoices/create" Component={CreateInvoice} />
       </Routes>
     </Router>
   )
