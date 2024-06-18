@@ -3,7 +3,7 @@
     border-radius: 14px;
 }
 
-.dark {
+.button-dark {
     background-color: var(--dark);
     border: 1px solid var(--dark);
     color: #fff;
@@ -11,7 +11,7 @@
     font-weight: 400;
 }
 
-.green {
+.button-green {
     background-color: var(--green);
     border: 1px solid var(--green);
     color: #000;
@@ -19,7 +19,7 @@
     font-weight: 400;
 }
 
-.default {
+.button-default {
     border: 1px solid var(--dark);
     background-color: transparent;
     color: #000;

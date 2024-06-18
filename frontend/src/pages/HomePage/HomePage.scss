@@ -1,0 +1,50 @@
+.app__hero {
+    margin: 50px 0px;
+    padding: 0 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        p {
+            font-size: 20px;
+            font-weight: 400;
+        }
+    }
+}
+
+.app__services {
+    padding: 0px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+
+    .heading {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+
+        .title {
+            padding: 0 10px;
+            background-color: var(--green);
+        }
+    }
+
+    .service-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        
+        .services {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            // flex-wrap: wrap;
+        }
+    }
+
+}

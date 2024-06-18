@@ -5,7 +5,7 @@ import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
 import authService from '../../../services/auth.service';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const token = localStorage.getItem('token');
 
   const logout = () => {

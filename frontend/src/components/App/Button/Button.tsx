@@ -14,7 +14,7 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, colorScheme }) => {
                 }
         };
     return (
-        <button className={`app__button ${colorScheme === 'green' ? 'green' : colorScheme === 'dark' ? 'dark' : 'default'}`} onClick={handleClick}>
+        <button className={`app__button ${colorScheme === 'green' ? 'button-green' : colorScheme === 'dark' ? 'button-dark' : 'button-default'}`} onClick={handleClick}>
             {text}
         </button>
     );
