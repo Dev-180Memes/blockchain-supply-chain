@@ -6,10 +6,12 @@ import DashboardPage from "./pages/DashboardPage";
 import InvoicePage from "./pages/InvoicePage";
 import CreateInvoice from "./components/Invoice/CreateInvoice";
 import OrderPage from "./pages/OrderPage";
+import Navbar from "./components/App/Navbar/Navbar";
 
 const App = () => {
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path="/" Component={HomePage} />
         <Route path="/login" Component={Login} />

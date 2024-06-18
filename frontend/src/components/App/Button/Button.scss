@@ -1,0 +1,28 @@
+.app__button {
+    padding: 15px 35px;
+    border-radius: 14px;
+}
+
+.dark {
+    background-color: var(--dark);
+    border: 1px solid var(--dark);
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.green {
+    background-color: var(--green);
+    border: 1px solid var(--green);
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.default {
+    border: 1px solid var(--dark);
+    background-color: transparent;
+    color: #000;
+    font-size: 20px;
+    font-weight: 400;
+}
