@@ -4,7 +4,15 @@ import { illustration } from '../../assets';
 import './HomePage.scss';
 import Button from '../../components/App/Button/Button';
 import ServiceCard from '../../components/App/ServiceCard/ServiceCard';
-import { search, click, analytics, content, message, smily } from '../../assets';
+import { 
+    search, 
+    click, 
+    analytics, 
+    content, 
+    message, 
+    smily,
+    cta
+} from '../../assets';
 
 const HomePage: React.FC = () => {
     return (
@@ -62,6 +70,20 @@ const HomePage: React.FC = () => {
                             image={analytics}
                         />
                     </div>
+                </div>
+            </div>
+
+            <div className="app__cta">
+                <div className="card">
+                    <div className="content">
+                        <h3>Transform Your Supply Chain Today</h3>
+                        <p>Discover how our blockchain technology can enhance the security, transparency, and efficiency of your supply chain operations. Contact us to learn more.</p>
+                        <Button 
+                            text='Get Your Free Consultation'
+                            colorScheme='dark'
+                        />
+                    </div>
+                    <img src={cta} alt="cta" />
                 </div>
             </div>
         </>

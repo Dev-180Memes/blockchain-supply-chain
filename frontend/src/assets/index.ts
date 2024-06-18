@@ -9,6 +9,7 @@ import content from "./content.png";
 import message from "./message.png";
 import search from "./search.png";
 import smily from "./smily.png";
+import cta from "./cta.png";
 
 export { 
     logo, 
@@ -22,4 +23,5 @@ export {
     message,
     search,
     smily,
+    cta,
 };
