@@ -13,6 +13,8 @@ import cta from "./cta.png";
 import facebook from "./facebook.png";
 import twitter from "./twitter.png";
 import linkedin from "./linkedin.png";
+import signup from "./signup.png";
+import login from "./login.png";
 
 export { 
     logo, 
@@ -30,4 +32,6 @@ export {
     facebook,
     twitter,
     linkedin,
+    signup,
+    login,
 };
