@@ -7,6 +7,7 @@ import InvoicePage from "./pages/InvoicePage";
 import CreateInvoice from "./components/Invoice/CreateInvoice";
 import OrderPage from "./pages/OrderPage";
 import Navbar from "./components/App/Navbar/Navbar";
+import Footer from "./components/App/Footer/Footer";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/invoices/create" Component={CreateInvoice} />
         <Route path="/orders" Component={OrderPage} />
       </Routes>
+      <Footer />
     </Router>
   )
 }

@@ -10,6 +10,9 @@ import message from "./message.png";
 import search from "./search.png";
 import smily from "./smily.png";
 import cta from "./cta.png";
+import facebook from "./facebook.png";
+import twitter from "./twitter.png";
+import linkedin from "./linkedin.png";
 
 export { 
     logo, 
@@ -24,4 +27,7 @@ export {
     search,
     smily,
     cta,
+    facebook,
+    twitter,
+    linkedin,
 };
