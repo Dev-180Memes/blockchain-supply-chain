@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
                 <div className="content">
                     <h1>Revolutionize Supply Chain with Blockchain</h1>
                     <p>Experience unparalleled security and transparency in your transactions. Streamline your operations with cutting-edge blockchain technology. Empower your business with next-level supply chain management.</p>
-                    <Link to={"/signup"}>
+                    <Link to={"/register"}>
                         <Button text='Get Started' colorScheme='dark' />
                     </Link>
                 </div>

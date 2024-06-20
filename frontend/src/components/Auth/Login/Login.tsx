@@ -1,7 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import authService from '../../services/auth.service';
-import { LoginCredentials } from '../../types';
+import authService from '../../../services/auth.service';
+import { LoginCredentials } from '../../../types';
+import "./Login.scss";
+import { login } from '../../../assets';
+import Button from '../../App/Button/Button';
 
 const Login: React.FC = () => {
     const [email, setEmail] = useState<string>('');
@@ -31,20 +34,27 @@ const Login: React.FC = () => {
     }
 
   return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-            <label>Email:</label>
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+    <div className='app__login'>
+        <div className="form">
+            <div className="heading">
+                <h2>Login</h2>
+            </div>
+            <form onSubmit={handleSubmit}>
+                <div className='form-group'>
+                    <label>Email:</label>
+                    <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+                </div>
+                <div className='form-group'>
+                    <label>Password:</label>
+                    <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+                </div>
+                <Button type="submit" text='Login' colorScheme='dark' />
+                {error && <p>{error}</p>}
+            </form>
         </div>
-        <div>
-            <label>Password:</label>
-            <input type="password" value={password} onChange={e => setPassword(e.target.value)} required />
+        <div className="image">
+            <img src={login} alt="login" />
         </div>
-        <button type="submit">Login</button>
-        {error && <p>{error}</p>}
-      </form>
     </div>
   )
 }
