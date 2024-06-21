@@ -1,6 +1,7 @@
 import React from 'react';
 import { Invoice } from '../../types';
 import invoiceService from '../../services/invoice.service';
+import Button from '../App/Button/Button';
 
 interface InvoiceItemProps {
     invoice: Invoice;
@@ -25,11 +26,11 @@ const InvoiceItem: React.FC<InvoiceItemProps> = ({ invoice }) => {
         <p>Invoice Number: {invoice.invoiceNumber}</p>
         <p>Buyer: {invoice.buyer.username}</p>
         <p>Seller: {invoice.seller.username}</p>
-        <p>Amount: {invoice.amount}</p>
+        <p>Amount: ${invoice.amount}</p>
         <p>Status: {invoice.status}</p>
         <p>Product Details: {invoice.productDetails}</p>
         {invoice.status === 'pending' && role === 'buyer' && (
-            <button onClick={handleApprove}>Approve</button>
+            <Button onClick={handleApprove} text='Approve'/>
         )}
     </li>
   )

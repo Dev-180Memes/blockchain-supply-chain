@@ -1,0 +1,13 @@
+.app__dashboard {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 80px;
+    gap: 30px;
+
+    h1 {
+        width: fit-content;
+        padding: 0 7px;
+        background-color: var(--green);
+        border-radius: 7px;
+    }
+}

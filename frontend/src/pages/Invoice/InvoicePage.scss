@@ -1,0 +1,43 @@
+.app__invoice {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 80px;
+    gap: 30px;
+
+    h1 {
+        width: fit-content;
+        padding: 0 7px;
+        background-color: var(--green);
+        border-radius: 7px;
+    }
+
+    .invoice_list {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+
+        p {
+            font-size: 25px;
+            color: var(--dark);
+        }
+
+        ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+
+            li {
+                padding: 10px 20px;
+                // border: 1px solid var(--light);
+                display: block;
+                border-bottom: 1px solid var(--dark);
+
+                p {
+                    font-size: 20px;
+                    color: var(--dark);
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+}

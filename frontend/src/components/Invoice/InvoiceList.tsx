@@ -8,7 +8,7 @@ interface InvoiceListProps {
 
 const InvoiceList: React.FC<InvoiceListProps> = ({ invoices }) => {
   return (
-    <div>
+    <div className='invoice_list'>
       {invoices?.length === 0 ? (
         <p>No invoices available</p>
       ) : (

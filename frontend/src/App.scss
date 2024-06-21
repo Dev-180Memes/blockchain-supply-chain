@@ -1,0 +1,16 @@
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-size: 2rem;
+}
+
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    font-size: 2rem;
+    color: #ff0000;
+}

@@ -26,7 +26,7 @@ const Login: React.FC = () => {
             if (response.data.role) {
                 localStorage.setItem("role", response.data.role);
             }
-            navigate('/dashboard');
+            window.location.href = '/';
         } catch (error) {
             console.error("Login failed:", error);
             setError("Login failed. Please check your credentials and try again.")

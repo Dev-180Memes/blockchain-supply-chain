@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import invoiceService from '../services/invoice.service';
-import { Invoice } from '../types';
-import InvoiceList from '../components/Invoice/InvoiceList';
+import invoiceService from '../../services/invoice.service';
+import { Invoice } from '../../types';
+import InvoiceList from '../../components/Invoice/InvoiceList';
+import './InvoicePage.scss';
 
 const InvoicePage: React.FC = () => {
     const [invoices, setInvoices] = useState<Invoice[] | undefined>([]);
@@ -26,15 +27,15 @@ const InvoicePage: React.FC = () => {
     }, []);
 
     if (loading) {
-        return <p>Loading...</p>
+        return <p className='loading'>Loading...</p>
     }
 
     if (error) {
-        return <p>{error}</p>
+        return <p className='error'>{error}</p>
     }
 
   return (
-    <div>
+    <div className='app__invoice'>
         <h1>Invoices</h1>
         <InvoiceList invoices={invoices} />
     </div>

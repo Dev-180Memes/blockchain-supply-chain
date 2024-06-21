@@ -27,7 +27,7 @@ const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
     localStorage.removeItem('role');
-    window.location.href = '/login';
+    window.location.href = '/';
 }
 
 export default {
