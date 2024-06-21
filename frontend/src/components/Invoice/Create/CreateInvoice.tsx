@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import invoiceService from '../../services/invoice.service';
-import authService from '../../services/auth.service';
-import { Invoice, User } from '../../types';
+import invoiceService from '../../../services/invoice.service';
+import authService from '../../../services/auth.service';
+import { Invoice, User } from '../../../types';
+import "./CreateInvoice.scss";
+import Button from '../../App/Button/Button';
 
 const CreateInvoice: React.FC = () => {
     const [users, setUsers] = useState<User[] | undefined>([]);
@@ -46,10 +48,10 @@ const CreateInvoice: React.FC = () => {
     }
 
   return (
-    <div>
+    <div className='app__create'>
         <h2>Create Invoice</h2>
         <form onSubmit={handleSubmit}>
-            <div>
+            <div className='form-group'>
                 <label>Buyer:</label>
                 <select onChange={(e) => setBuyerId(e.target.value)} required>
                     <option value="">Select a buyer</option>
@@ -58,15 +60,15 @@ const CreateInvoice: React.FC = () => {
                     ))}
                 </select>
             </div>
-            <div>
+            <div className='form-group'>
                 <label>Amount:</label>
                 <input type="number" value={amount} onChange={(e) => setAmount(Number(e.target.value))} required />
             </div>
-            <div>
+            <div className='form-group'>
                 <label>Product Details:</label>
                 <textarea value={productDetails} onChange={(e) => setProductDetails(e.target.value)} required ></textarea>
             </div>
-            <button type="submit">Create Invoice</button>
+            <Button type="submit" text='Create Invoice' />
             {error && <p>{error}</p>}
         </form>
     </div>

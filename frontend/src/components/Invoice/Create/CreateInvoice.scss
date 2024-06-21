@@ -1,0 +1,53 @@
+.app__create {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 80px;
+    gap: 30px;
+
+    h2 {
+        width: fit-content;
+        padding: 0 7px;
+        background-color: var(--green);
+        border-radius: 7px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            label {
+                background-color: var(--green);
+                color: var(--dark);
+                width: fit-content;
+                padding: 0 5px;
+            }
+
+            input {
+                padding: 5px;
+                border: 1px solid #000;
+                border-radius: 5px;
+                background-color: var(--light);
+            }
+
+            select {
+                padding: 5px;
+                border: 1px solid #000;
+                border-radius: 5px;
+                background-color: var(--light);
+            }
+
+            textarea {
+                padding: 5px;
+                border: 1px solid #000;
+                border-radius: 5px;
+                background-color: var(--light);
+            }
+        }
+    }
+}

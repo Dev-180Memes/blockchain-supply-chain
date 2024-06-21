@@ -1,6 +1,7 @@
 import React from 'react';
 import { Order } from '../../types';
 import invoiceService from '../../services/invoice.service';
+import Button from '../App/Button/Button';
 
 interface OrderItemProps {
     order: Order;
@@ -39,10 +40,10 @@ const OrderItem: React.FC<OrderItemProps> = ({ order }) => {
         <p>Status: {order.status}</p>
         <p>Delivery Details: {order.deliveryDetails}</p>
         {role === 'seller' && order.status === 'shipped' && (
-            <button onClick={handleMarkInTransit}>In Transit</button>
+            <Button onClick={handleMarkInTransit} text='Mark as In Transit' />
         )}
         {role === 'buyer' && order.status === 'in transit' && (
-            <button onClick={handleMarkAsDelivered}>Mark as Delivered</button>
+            <Button onClick={handleMarkAsDelivered} text='Mark as Delivered' />
         )}
     </li>
   )
