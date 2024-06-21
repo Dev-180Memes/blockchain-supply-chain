@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
 
   const logout = () => {
     authService.logout();
-    window.location.reload();
+    // window.location.reload();
   }
 
   return (

@@ -8,7 +8,7 @@ interface OrderListProps {
 
 const OrderList: React.FC<OrderListProps> = ({ orders }) => {
   return (
-    <div>
+    <div className='order_list'>
         {orders.length === 0 ? (
             <p>No orders found</p>
         ) : (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import BuyerDashboard from '../../components/Dashboard/Buyer/BuyerDashboard';
-import SellerDashboard from '../../components/Dashboard/SellerDashboard';
+import SellerDashboard from '../../components/Dashboard/Seller/SellerDashboard';
 // import authService from '../../services/auth.service';
 import "./DashboardPage.scss";
 

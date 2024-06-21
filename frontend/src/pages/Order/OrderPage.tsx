@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import invoiceService from '../services/invoice.service';
-import { Order } from '../types';
-import OrderList from '../components/Order/OrderList';
+import invoiceService from '../../services/invoice.service';
+import { Order } from '../../types';
+import OrderList from '../../components/Order/OrderList';
+import "./OrderPage.scss";
 
 const OrderPage: React.FC = () => {
     const [orders, setOrders] = useState<Order[]>([]);
@@ -26,15 +27,15 @@ const OrderPage: React.FC = () => {
     }, []);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return <p className='loading'>Loading...</p>;
     }
 
     if (error) {
-        return <p>{error}</p>;
+        return <p className='error'>{error}</p>;
     }
     
   return (
-    <div>
+    <div className='app__order'>
         <h1>Orders</h1>
         <OrderList orders={orders} />
     </div>

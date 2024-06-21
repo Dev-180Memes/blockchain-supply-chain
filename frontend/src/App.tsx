@@ -5,7 +5,7 @@ import Register from "./components/Auth/Register/Register";
 import DashboardPage from "./pages/Dashboard/DashboardPage";
 import InvoicePage from "./pages/Invoice/InvoicePage";
 import CreateInvoice from "./components/Invoice/CreateInvoice";
-import OrderPage from "./pages/OrderPage";
+import OrderPage from "./pages/Order/OrderPage";
 import Navbar from "./components/App/Navbar/Navbar";
 import Footer from "./components/App/Footer/Footer";
 import "./App.scss";
